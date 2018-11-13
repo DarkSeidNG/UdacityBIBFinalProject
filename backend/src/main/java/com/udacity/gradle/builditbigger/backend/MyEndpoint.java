@@ -28,7 +28,7 @@ public class MyEndpoint {
         return response;
     }
 
-    @ApiMethod(name = "joke")
+    @ApiMethod(name = "joke", httpMethod = "GET")
     public MyBean joke() {
         MyBean response = new MyBean();
         response.setData(JokeLib.getJoke());

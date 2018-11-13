@@ -9,7 +9,7 @@
   }
  },
  "basePath": "/_ah/api/myApi/v1/",
- "baseUrl": "https://myApplicationId.appspot.com/_ah/api/myApi/v1/",
+ "baseUrl": "https://ifwaxtel-udacity-final.appspot.com/_ah/api/myApi/v1/",
  "batchPath": "batch",
  "description": "This is an API",
  "discoveryVersion": "v1",
@@ -21,7 +21,7 @@
  "kind": "discovery#restDescription",
  "methods": {
   "joke": {
-   "httpMethod": "POST",
+   "httpMethod": "GET",
    "id": "myApi.joke",
    "path": "joke",
    "response": {
@@ -102,7 +102,7 @@
   }
  },
  "protocol": "rest",
- "rootUrl": "https://myApplicationId.appspot.com/_ah/api/",
+ "rootUrl": "https://ifwaxtel-udacity-final.appspot.com/_ah/api/",
  "schemas": {
   "MyBean": {
    "id": "MyBean",
