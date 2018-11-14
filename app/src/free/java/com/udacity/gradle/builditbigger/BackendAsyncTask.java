@@ -3,6 +3,7 @@ package com.udacity.gradle.builditbigger;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -55,13 +56,17 @@ class BackendAsyncTask extends AsyncTask<Context, Void, String> {
         try {
             return myApiService.joke().execute().getData();
         } catch (IOException e) {
-            return e.getMessage();
+            Log.e("BackendAsyncTask",e.getMessage());
+            return "";
         }
     }
 
     @Override
     protected void onPostExecute(final String result) {
+        handleInterstitial(result);
+    }
 
+    private void handleInterstitial(String result){
         // Setting the interstitial ad
         mResult = result;
         mInterstitialAd = new InterstitialAd(context);
@@ -97,12 +102,11 @@ class BackendAsyncTask extends AsyncTask<Context, Void, String> {
                 .addTestDevice(context.getString(R.string.device_id))
                 .build();
         mInterstitialAd.loadAd(ar);
-
     }
 
     private void showActivityJoke(){
         Intent intent = new Intent(context, LibraryJokeActivity.class);
-        intent.putExtra("joke", mResult);
+        intent.putExtra(LibraryJokeActivity.JOKE_KEY, mResult);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }

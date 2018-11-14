@@ -14,6 +14,9 @@ public class AsyncTaskTest extends AndroidTestCase {
 
         try {
             mResult = backendAsyncTask.get();
+            if(mResult.equals("")){
+                mResult = null;
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

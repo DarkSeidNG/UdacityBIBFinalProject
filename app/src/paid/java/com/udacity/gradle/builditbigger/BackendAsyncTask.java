@@ -58,7 +58,8 @@ class BackendAsyncTask extends AsyncTask<Context, Void, String> {
         try {
             return myApiService.joke().execute().getData();
         } catch (IOException e) {
-            return e.getMessage();
+            Log.e("BackendAsyncTask",e.getMessage());
+            return "";
         }
     }
 
@@ -74,7 +75,7 @@ class BackendAsyncTask extends AsyncTask<Context, Void, String> {
 
     private void showActivityJoke(){
         Intent intent = new Intent(context, LibraryJokeActivity.class);
-        intent.putExtra("joke", mResult);
+        intent.putExtra(LibraryJokeActivity.JOKE_KEY, mResult);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
